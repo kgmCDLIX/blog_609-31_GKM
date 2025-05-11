@@ -1,0 +1,32 @@
+{% extends "base_layout.html" %}
+{% block title %}Article List{% endblock title %}
+
+{% block content %}
+  <div class="d-flex justify-content-end px-5 mt-4">
+    {% if user.is_authenticated %}
+      <form action="{% url 'accounts:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="login-btn">Logout</button>
+      </form>
+    {% else %}
+      <a href="{% url 'accounts:login' %}" class="login-btn">Login</a>
+    {% endif %}
+  </div>
+
+  <main>
+    <h1>Article List</h1>
+    <div class="articles">
+      {% for element in articles %}
+        <div class="article__item">
+          <h2>
+            <a href="{% url 'articles:article_detail' slug=element.slug %}">
+              {{ element.title }}
+            </a>
+          </h2>
+          <p>{{ element.snippet }}</p>
+          <time>{{ element.date }}</time>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock content %}

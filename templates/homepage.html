@@ -1,0 +1,25 @@
+{% extends "base_layout.html" %}
+{% block title %}Homepage{% endblock title %}
+
+{% block content %}
+  <main class="container">
+    <h1>{{ header }}</h1>
+    <p class="introducing">{{ message }}</p>
+
+    <section class="recent-posts">
+      <h2>Что нового</h2>
+      <ul>
+        {% for article in recent_articles %}
+          <li>
+            <a href="{% url 'articles:article_detail' slug=article.slug %}">
+              {{ article.title }}
+            </a>
+            <small>— {{ article.date|date:"d M Y" }}</small>
+          </li>
+        {% empty %}
+          <li>Пока нет новых статей.</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+{% endblock content %}
