@@ -24,10 +24,21 @@
         <nav class="navbar">
             <ul>
                 <li class="navbar__item"><a href="{% url 'homepage' %}">Главная</a></li>
-                <li class="navbar__item"><a href="{% url 'articles:articles_list' %}">Статьи</a></li>
+                {# <li class="navbar__item"><a href="{% url 'homepage' %}">Статьи</a></li> #}
                 <li class="navbar__item"><a href="{% url 'about' %}">О проекте</a></li>
             </ul>
         </nav>
+
+        <div class="auth-controls">
+            {% if user.is_authenticated %}
+                <form action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="login-btn">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'accounts:login' %}" class="login-btn">Login</a>
+            {% endif %}
+        </div>
     </div>
 </header>
 
