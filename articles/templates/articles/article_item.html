@@ -5,5 +5,19 @@
         <img src="{{ article.thumbnail.url }}" alt="picture">
         <h1>{{ article.title }}</h1>
         <p>{{ article.body }}</p>
+        {% if user.is_authenticated and user.id == article.author.id %}
+            <div>
+                <div class="text-center mt-3">
+                <a class="btn btn-warning"
+                   href="{% url 'articles:update' article.slug %}">
+                    Update
+                </a>
+                <a class="btn btn-danger"
+                   href="{% url 'articles:delete' article.slug %}">
+                    Delete
+                </a>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock content %}

@@ -201,37 +201,64 @@ h1 {
 .introducing{
     text-align: center;
 }
-
-/*новые статьи*/
-.recent-posts {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #ddd;
+.form-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.recent-posts h2 {
-  color: #2c6fbb;
-  font-family: 'Roboto Condensed', sans-serif;
+
+@media (max-width: 768px) {
+    .articles {
+        grid-template-columns: 1fr; /* 1 колонка вместо 2 */
+    }
+
+    .site-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .article-detail img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .btn + .btn {
+        margin-left: 0;
+    }
+
+    .article-detail {
+        padding: 0 1rem;
+    }
+    .btn-outline-primary{
+        width: 100%;
+    }
+    .btn btn-warning{
+        width: 100%;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+    }
 }
 
-.recent-posts ul {
-  list-style: none;
-  padding: 0;
-}
-
-.recent-posts li {
-  margin-bottom: 10px;
-}
-
-.recent-posts a {
-  color: #2c6fbb;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.recent-posts a:hover {
-  text-decoration: underline;
-}
 
 
 
